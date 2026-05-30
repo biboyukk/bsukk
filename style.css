@@ -1,1 +1,15 @@
+.banner{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin-bottom:20px;
+}
 
+.banner img{
+    width:420px;
+    height:160px;
+    object-fit:cover;
+    border-radius:20px;
+    filter:brightness(0.7);
+    border:1px solid rgba(255,255,255,0.1);
+}
