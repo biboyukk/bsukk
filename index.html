@@ -1,1 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Website</title>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#0a0a0a;
+    color:white;
+    overflow:hidden;
+}
+
+/* ENTER SCREEN */
+#enter-screen{
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    transition:opacity .8s ease;
+}
+
+.enter-btn{
+    padding:15px 50px;
+    border:1px solid #fff;
+    background:transparent;
+    color:#fff;
+    font-size:1.2rem;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.enter-btn:hover{
+    background:white;
+    color:black;
+}
+
+/* MAIN SITE */
+#main-site{
+    display:none;
+    height:100vh;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+}
+
+.profile{
+    padding:30px;
+}
+
+.profile img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    border:2px solid white;
+    margin-bottom:15px;
+}
+
+h1{
+    font-size:2.5rem;
+    margin-bottom:10px;
+}
+
+p{
+    color:#bdbdbd;
+}
+
+.socials{
+    margin-top:20px;
+}
+
+.socials a{
+    color:white;
+    font-size:28px;
+    margin:0 10px;
+    transition:.3s;
+}
+
+.socials a:hover{
+    color:#7a7aff;
+}
+</style>
+</head>
+<body>
+
+<!-- AUDIO -->
+<audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ENTER PAGE -->
+<div id="enter-screen">
+    <button class="enter-btn" onclick="enterSite()">
+        ENTER
+    </button>
+</div>
+
+<!-- MAIN WEBSITE -->
+<div id="main-site">
+    <div class="profile">
+        <img src="https://via.placeholder.com/120" alt="Profile">
+
+        <h1>Your Name</h1>
+        <p>Welcome to my website.</p>
+
+        <div class="socials">
+            <a href="https://discord.com/users/YOUR_ID" target="_blank">
+                <i class="fab fa-discord"></i>
+            </a>
+
+            <a href="https://instagram.com/YOUR_USERNAME" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="https://tiktok.com/@YOUR_USERNAME" target="_blank">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+function enterSite() {
+    document.getElementById("bgMusic").play();
+
+    const enter = document.getElementById("enter-screen");
+
+    enter.style.opacity = "0";
+
+    setTimeout(() => {
+        enter.style.display = "none";
+        document.getElementById("main-site").style.display = "flex";
+    }, 800);
+}
+</script>
+
+</body>
+</html>
