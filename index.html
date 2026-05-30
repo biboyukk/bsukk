@@ -187,29 +187,38 @@ animation:beat 1s infinite ease-in-out;
 <div class="stars2"></div>
 <div class="stars3"></div>
 
+<div id="enter">ENTER</div>
+
+<div id="main" style="display:none;">
+  <!-- your website content -->
+</div>
+
 <audio id="music" loop>
   <source src="https://files.catbox.moe/m9bt04.mp3" type="audio/mpeg">
 </audio>
 
-<div id="enter">CLICK TO ENTER</div>
-
 <script>
-document.getElementById("enter").onclick = function () {
+window.onload = function () {
 
+    const enter = document.getElementById("enter");
+    const main = document.getElementById("main");
     const music = document.getElementById("music");
 
-    music.load(); // forces reload
-    music.volume = 5;
+    enter.addEventListener("click", function () {
 
-    let playPromise = music.play();
+        enter.style.opacity = "0";
 
-    if (playPromise !== undefined) {
-        playPromise.catch(err => {
-            alert("Audio blocked or failed: " + err);
-        });
-    }
+        setTimeout(() => {
+            enter.style.display = "none";
+            main.style.display = "flex";
 
-    this.style.display = "none";
+            music.volume = 1;
+            music.play();
+
+        }, 500);
+
+    });
+
 };
 </script>
 </script>
