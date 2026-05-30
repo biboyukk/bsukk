@@ -3,23 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>biboy</title>
+<title>Bio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
 body{
-background:black;
+margin:0;
 overflow:hidden;
+background:black;
 color:white;
 font-family:Arial;
 }
@@ -28,53 +21,15 @@ font-family:Arial;
 #enter{
 position:fixed;
 inset:0;
-background:black;
 display:flex;
 justify-content:center;
 align-items:center;
+background:black;
 z-index:9999;
-cursor:pointer;
-}
-
-#enter h1{
 font-family:'UnifrakturCook',cursive;
-font-size:4rem;
-letter-spacing:5px;
-}
-
-/* BACKGROUND STARS */
-.stars, .stars2, .stars3 {
-position:absolute;
-width:100%;
-height:100%;
-background-repeat:repeat;
-background-size:contain;
-}
-
-.stars{
-background-image:radial-gradient(white 1px, transparent 1px);
-background-size:3px 3px;
-animation:moveStars 60s linear infinite;
-opacity:.2;
-}
-
-.stars2{
-background-image:radial-gradient(white 1px, transparent 1px);
-background-size:2px 2px;
-animation:moveStars 100s linear infinite;
-opacity:.1;
-}
-
-.stars3{
-background-image:radial-gradient(white 1px, transparent 1px);
-background-size:1px 1px;
-animation:moveStars 150s linear infinite;
-opacity:.05;
-}
-
-@keyframes moveStars{
-from{transform:translateY(0);}
-to{transform:translateY(-1000px);}
+font-size:3rem;
+cursor:pointer;
+transition:1s;
 }
 
 /* MAIN */
@@ -83,58 +38,23 @@ display:none;
 height:100vh;
 justify-content:center;
 align-items:center;
-position:relative;
+flex-direction:column;
+text-align:center;
 }
 
 /* CARD */
 .card{
-width:420px;
 padding:30px;
-text-align:center;
 background:rgba(255,255,255,0.05);
-backdrop-filter:blur(20px);
-border-radius:25px;
+backdrop-filter:blur(15px);
+border-radius:20px;
 border:1px solid rgba(255,255,255,0.1);
-box-shadow:0 0 60px rgba(150,0,255,0.25);
-z-index:10;
 }
 
-.avatar{
-width:120px;
-height:120px;
-border-radius:50%;
-border:2px solid white;
-}
-
+/* NAME */
 .name{
 font-family:'UnifrakturCook',cursive;
 font-size:3rem;
-margin-top:10px;
-}
-
-.bio{
-margin-top:15px;
-min-height:50px;
-color:#ccc;
-}
-
-/* SOCIALS */
-.socials{
-margin-top:20px;
-display:flex;
-justify-content:center;
-gap:20px;
-}
-
-.socials a{
-color:white;
-font-size:28px;
-transition:.3s;
-}
-
-.socials a:hover{
-color:#b300ff;
-transform:translateY(-5px);
 }
 
 /* PARTICLES */
@@ -155,151 +75,71 @@ opacity:0;
 }
 }
 
-/* VISUALIZER */
-#visualizer{
-display:flex;
-justify-content:center;
-gap:4px;
-margin-top:15px;
-height:40px;
-}
-
-.bar{
-width:4px;
-height:5px;
-background:#b300ff;
-animation:beat 1s infinite ease-in-out;
-}
-
-@keyframes beat{
-0%,100%{height:5px;}
-50%{height:35px;}
-}
-
 </style>
 </head>
 
 <body>
 
-<div id="enter"><h1>ENTER</h1></div>
-
-<div class="stars"></div>
-<div class="stars2"></div>
-<div class="stars3"></div>
-
-<div id="enter">ENTER</div>
-
-<div id="main" style="display:none;">
-  <!-- your website content -->
-</div>
-
-<audio id="music" loop>
-  <source src="https://files.catbox.moe/m9bt04.mp3" type="audio/mpeg">
+<!-- MUSIC -->
+<audio id="molly" loop>
+  <source src="molly.mp3" type="audio/mpeg">
 </audio>
 
-<script>
-window.onload = function () {
+<!-- ENTER -->
+<div id="enter">ENTER</div>
 
-    const enter = document.getElementById("enter");
-    const main = document.getElementById("main");
-    const music = document.getElementById("music");
-
-    enter.addEventListener("click", function () {
-
-        enter.style.opacity = "0";
-
-        setTimeout(() => {
-            enter.style.display = "none";
-            main.style.display = "flex";
-
-            music.volume = 1;
-            music.play();
-
-        }, 500);
-
-    });
-
-};
-</script>
-</script>
-
+<!-- MAIN -->
 <div id="main">
 
-<div class="card">
+  <div class="card">
 
-<img class="avatar" src="https://images-ext-1.discordapp.net/external/dUpnEXz4UcjmQp9W2HGjEgrMJf18WXsdkUNsLC1UJmI/%3Fsize%3D4096%26ignore%3Dtrue%29./https/cdn.discordapp.com/avatars/1254550540562468914/682ccdfea096b0689f4fcd51daf71a28.png?format=webp&quality=lossless">
+    <div class="name">𝔇𝔦𝔞𝔷</div>
+    <p>Welcome to my bio</p>
 
-<div class="name">biboy</div>
-
-<div class="bio" id="bio"></div>
-
-<div id="visualizer">
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-</div>
-
-<div class="socials">
-
-<a href="https://discord.com/users/1254550540562468914"><i class="fab fa-discord"></i></a>
-<a href="https://instagram.com/_tiandiaz"><i class="fab fa-instagram"></i></a>
-<a href="https://tiktok.com/@bsuukk"><i class="fab fa-tiktok"></i></a>
-
-</div>
-
-</div>
+  </div>
 
 </div>
 
 <script>
 
-const enter=document.getElementById("enter");
-const main=document.getElementById("main");
-const music=document.getElementById("music");
+window.onload = function(){
 
-enter.onclick=()=>{
+const enter = document.getElementById("enter");
+const main = document.getElementById("main");
+const music = document.getElementById("molly");
 
-enter.style.opacity="0";
+/* ENTER CLICK */
+enter.addEventListener("click", function(){
 
-setTimeout(()=>{
-enter.style.display="none";
-main.style.display="flex";
-music.play();
-typeText();
-},800);
+enter.style.opacity = "0";
 
-};
+setTimeout(() => {
+enter.style.display = "none";
+main.style.display = "flex";
 
-/* typing effect */
+/* MUSIC FIX (IMPORTANT) */
+music.volume = 1;
+music.play().catch(err => {
+console.log("Autoplay blocked:", err);
+});
 
-const text="Welcome to my dark bio • Developer • Gamer • Designer";
-let i=0;
+}, 800);
 
-function typeText(){
-if(i<text.length){
-document.getElementById("bio").innerHTML+=text[i];
-i++;
-setTimeout(typeText,50);
-}
+});
+
 }
 
-/* mouse particles */
+/* MOUSE PARTICLES */
+document.addEventListener("mousemove", e => {
 
-document.addEventListener("mousemove",(e)=>{
-
-const p=document.createElement("div");
-p.className="particle";
-p.style.left=e.clientX+"px";
-p.style.top=e.clientY+"px";
+const p = document.createElement("div");
+p.className = "particle";
+p.style.left = e.clientX + "px";
+p.style.top = e.clientY + "px";
 
 document.body.appendChild(p);
 
-setTimeout(()=>p.remove(),2000);
+setTimeout(() => p.remove(), 2000);
 
 });
 
