@@ -1,151 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>bsukk</title>
+<title>Your Bio</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
 }
 
 body{
-    background:#0a0a0a;
-    color:white;
     overflow:hidden;
+    background:#050505;
+    color:white;
+    font-family:Inter,sans-serif;
 }
 
-/* ENTER SCREEN */
-#enter-screen{
+/* Animated background */
+
+.bg{
     position:fixed;
     inset:0;
-    background:#000;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(140,0,255,.25), transparent 30%),
+    radial-gradient(circle at 80% 40%, rgba(255,255,255,.08), transparent 25%),
+    radial-gradient(circle at 50% 80%, rgba(80,0,255,.15), transparent 35%),
+    #050505;
+    animation:bgMove 12s infinite alternate ease-in-out;
+}
+
+@keyframes bgMove{
+    from{transform:scale(1);}
+    to{transform:scale(1.08);}
+}
+
+/* Enter screen */
+
+#enter{
+    position:fixed;
+    inset:0;
+    background:black;
     display:flex;
     justify-content:center;
     align-items:center;
     z-index:9999;
-    transition:opacity .8s ease;
-}
-
-.enter-btn{
-    padding:15px 50px;
-    border:1px solid #fff;
-    background:transparent;
-    color:#fff;
-    font-size:1.2rem;
     cursor:pointer;
-    transition:.3s;
 }
 
-.enter-btn:hover{
-    background:white;
-    color:black;
+#enter h1{
+    font-family:'UnifrakturCook',cursive;
+    font-size:4rem;
+    letter-spacing:4px;
 }
 
-/* MAIN SITE */
-#main-site{
-    display:none;
+/* Profile */
+
+.container{
     height:100vh;
+    display:none;
     justify-content:center;
     align-items:center;
-    flex-direction:column;
+    position:relative;
+    z-index:10;
+}
+
+.card{
+    width:500px;
+    max-width:90%;
     text-align:center;
+
+    backdrop-filter:blur(20px);
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:40px;
+    border-radius:30px;
+
+    box-shadow:
+    0 0 80px rgba(120,0,255,.25);
 }
 
-.profile{
-    padding:30px;
-}
-
-.profile img{
-    width:120px;
-    height:120px;
+.avatar{
+    width:140px;
+    height:140px;
     border-radius:50%;
-    border:2px solid white;
-    margin-bottom:15px;
+    object-fit:cover;
+    border:3px solid rgba(255,255,255,.3);
 }
 
-h1{
-    font-size:2.5rem;
-    margin-bottom:10px;
+.name{
+    margin-top:15px;
+    font-family:'UnifrakturCook',cursive;
+    font-size:3.5rem;
 }
 
-p{
-    color:#bdbdbd;
+.status{
+    color:#a9a9a9;
+    margin-top:10px;
 }
+
+.bio{
+    margin-top:25px;
+    min-height:80px;
+    color:#ddd;
+    line-height:1.8;
+}
+
+/* Socials */
 
 .socials{
-    margin-top:20px;
+    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    gap:25px;
 }
 
 .socials a{
     color:white;
     font-size:28px;
-    margin:0 10px;
     transition:.3s;
 }
 
 .socials a:hover{
-    color:#7a7aff;
+    transform:translateY(-5px);
+    color:#9f6fff;
 }
+
+/* Floating particles */
+
+.flake{
+    position:fixed;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:white;
+    pointer-events:none;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:
+        translateY(150px)
+        rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* typing cursor */
+
+.cursor{
+    border-right:2px solid white;
+    animation:blink .8s infinite;
+}
+
+@keyframes blink{
+    50%{
+        border-color:transparent;
+    }
+}
+
 </style>
 </head>
 <body>
 
-<!-- AUDIO -->
-<audio id="bgMusic" loop>
-    <source src="https://open.spotify.com/track/4a4uVyBbMfHU3XsRAlKx89?si=264ec9e7aecd41e8" type="audio/mpeg">
+<div class="bg"></div>
+
+<audio id="music" loop>
+<source src="https://YOUR-MUSIC-LINK.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ENTER PAGE -->
-<div id="enter-screen">
-    <button class="enter-btn" onclick="enterSite()">
-        ENTER
-    </button>
+<div id="enter">
+    <h1>Enter</h1>
 </div>
 
-<!-- MAIN WEBSITE -->
-<div id="main-site">
-    <div class="profile">
-        <img src="https://via.placeholder.com/120" alt="Profile">
+<div class="container" id="main">
 
-        <h1>Your Name</h1>
-        <p>Welcome to my website.</p>
+<div class="card">
 
-        <div class="socials">
-            <a href="https://discord.com/users/YOUR_ID" target="_blank">
-                <i class="fab fa-discord"></i>
-            </a>
+<img
+class="avatar"
+src="https://i.imgur.com/Q7ZV6Qk.png">
 
-            <a href="https://instagram.com/YOUR_USERNAME" target="_blank">
-                <i class="fab fa-instagram"></i>
-            </a>
+<div class="name">
+𝔇𝔦𝔞𝔷
+</div>
 
-            <a href="https://tiktok.com/@YOUR_USERNAME" target="_blank">
-                <i class="fab fa-tiktok"></i>
-            </a>
-        </div>
-    </div>
+<div class="status">
+Developer • Gamer • Designer
+</div>
+
+<div class="bio">
+<span id="typing" class="cursor"></span>
+</div>
+
+<div class="socials">
+
+<a href="https://discord.com/users/YOUR_ID" target="_blank">
+<i class="fab fa-discord"></i>
+</a>
+
+<a href="https://instagram.com/YOUR_USERNAME" target="_blank">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://tiktok.com/@YOUR_USERNAME" target="_blank">
+<i class="fab fa-tiktok"></i>
+</a>
+
+</div>
+
+</div>
+
 </div>
 
 <script>
-function enterSite() {
-    document.getElementById("bgMusic").play();
 
-    const enter = document.getElementById("enter-screen");
+const enter=document.getElementById('enter');
+const main=document.getElementById('main');
+const music=document.getElementById('music');
 
-    enter.style.opacity = "0";
+enter.onclick=()=>{
 
-    setTimeout(() => {
-        enter.style.display = "none";
-        document.getElementById("main-site").style.display = "flex";
-    }, 800);
+enter.style.opacity='0';
+
+setTimeout(()=>{
+enter.style.display='none';
+main.style.display='flex';
+music.play();
+typeWriter();
+},800);
+
+};
+
+/* About me animation */
+
+const text=
+"Welcome to my profile. Creating things, gaming, and exploring the web.";
+
+let i=0;
+
+function typeWriter(){
+
+if(i<text.length){
+
+document.getElementById('typing').innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typeWriter,50);
+
 }
+
+}
+
+/* Mouse snowflakes */
+
+document.addEventListener('mousemove',e=>{
+
+const flake=document.createElement('div');
+
+flake.className='flake';
+
+flake.style.left=e.clientX+'px';
+flake.style.top=e.clientY+'px';
+
+flake.style.width=
+Math.random()*6+2+'px';
+
+flake.style.height=
+flake.style.width;
+
+document.body.appendChild(flake);
+
+setTimeout(()=>{
+flake.remove();
+},2000);
+
+});
+
 </script>
 
 </body>
