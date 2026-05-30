@@ -194,8 +194,13 @@ animation:beat 1s infinite ease-in-out;
 </audio>
 
 <script>
-document.getElementById("enter").onclick = () => {
-  document.getElementById("music").play();
+document.getElementById("enter").onclick = function () {
+    const music = document.getElementById("music");
+
+    music.volume = 1;   // important
+    music.play();       // must be triggered by click
+
+    this.style.display = "none";
 };
 </script>
 
