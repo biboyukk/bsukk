@@ -187,9 +187,17 @@ animation:beat 1s infinite ease-in-out;
 <div class="stars2"></div>
 <div class="stars3"></div>
 
-<audio id="m9bt04" loop>
+<div id="enter">ENTER</div>
+
+<audio id="music" loop>
   <source src="https://files.catbox.moe/m9bt04.mp3" type="audio/mpeg">
 </audio>
+
+<script>
+document.getElementById("enter").onclick = () => {
+  document.getElementById("music").play();
+};
+</script>
 
 <div id="main">
 
